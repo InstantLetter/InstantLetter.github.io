@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Letter - From Your Heart to Their Hands</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Banner Section -->
+    <div class="banner"></div>
+
+    <!-- Title and Slogan Section -->
+    <section class="title-section">
+        <h1>Instant Letter</h1>
+        <p>From Your Heart to Their Hands in Six Hours</p>
+    </section>
+
+    <!-- Main Content Section -->
+    <main>
+        <section class="intro">
+            <h2>Express Your Feelings Instantly</h2>
+            <p>
+                Whether you need to send a heartfelt message, a difficult farewell, or even a playful prank, we're here to help. 
+                Upload your letter, and we'll hand-deliver it within six hours. Sometimes, delivering a message in person 
+                can be more meaningful—or more memorable!
+            </p>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <h3>Our Services</h3>
+            <ul>
+                <li><strong>Love Letters:</strong> Make someone's day by sending them a heartfelt, personal letter.</li>
+                <li><strong>Break-Up Letters:</strong> Deliver difficult messages with a respectful, thoughtful touch.</li>
+                <li><strong>Prank Letters:</strong> Add a little fun with a light-hearted message to surprise your friends.</li>
+            </ul>
+        </section>
+
+        <!-- Postcode Search Section -->
+        <section class="postcode-section">
+            <h3>Check Delivery Availability</h3>
+            <input type="text" id="postcode" placeholder="Enter Postcode">
+            <button onclick="checkPostcode()">Check</button>
+            <div class="message" id="message"></div>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="upload-section" id="upload-section">
+            <h3>Upload Your Letter</h3>
+            <form action="#" method="post" enctype="multipart/form-data">
+                <input type="file" name="letter" accept=".pdf,.doc,.docx" required><br>
+                <button type="submit">Send Letter</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2023 InstantLetter.co.uk | Connecting Hearts Swiftly</p>
+    </footer>
+
+    <!-- JavaScript for Postcode Validation -->
+    <script>
+        function checkPostcode() {
+            const postcodeInput = document.getElementById('postcode').value.trim().toUpperCase();
+            const messageDiv = document.getElementById('message');
+            const uploadSection = document.getElementById('upload-section');
+
+            // List of Shrewsbury postcodes (partial list for example purposes)
+            const shrewsburyPostcodes = ['SY1', 'SY2', 'SY3', 'SY4', 'SY5', 'SY99'];
+            const postcodeArea = postcodeInput.split(' ')[0];
+
+            if (shrewsburyPostcodes.includes(postcodeArea)) {
+                messageDiv.style.color = 'green';
+                messageDiv.textContent = 'Great news! We deliver to your area.';
+                uploadSection.style.display = 'block';
+            } else if (postcodeInput === '') {
+                messageDiv.style.color = '#800020';
+                messageDiv.textContent = 'Please enter a postcode.';
+                uploadSection.style.display = 'none';
+            } else {
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = 'Sorry, we do not currently deliver to your area.';
+                uploadSection.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
